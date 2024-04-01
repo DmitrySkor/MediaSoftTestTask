@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Component
 public class ProductsServiceImpl implements ProductsService {
@@ -22,6 +23,7 @@ public class ProductsServiceImpl implements ProductsService {
 
     @Override
     public List<Product> getAllProducts() {
+
         return productsRepository.findAll();
     }
 
@@ -33,17 +35,29 @@ public class ProductsServiceImpl implements ProductsService {
     }
 
     @Override
-    public void deleteProduct(Integer id) {
+    public void deleteProduct(UUID id) {
         productsRepository.deleteById(id);
     }
 
     @Override
-    public Product getProduct(Integer id) {
-        return productsRepository.findById(id).get();
+    public Product getProduct(UUID id) {
+
+        Product alterProduct = Product.builder()
+                .id(UUID.randomUUID())
+                .category("Товар не существует")
+                .name("Товар не существует")
+                .description("Товар не существует")
+                .price(0.0)
+                .quantity(0)
+                .dateOfCreation(LocalDate.now())
+                .dateOfLastQuantityChange(LocalDateTime.now())
+                .build();
+
+        return productsRepository.findById(id).orElse(alterProduct);
     }
 
     @Override
-    public void updateProduct(ProductsForm productsForm, Integer productId) {
+    public void updateProduct(ProductsForm productsForm, UUID productId) {
         Product beforeUpdateProduct = getProduct(productId);
         Product afterUpdateProduct = Product.builder()
                 .id(productId)

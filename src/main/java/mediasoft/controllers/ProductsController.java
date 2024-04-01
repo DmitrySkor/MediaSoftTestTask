@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 public class ProductsController {
@@ -39,7 +40,7 @@ public class ProductsController {
     }
 
     @GetMapping("/products/{product-id}")
-    public String getProductPage(@PathVariable("product-id") Integer id, Model model) {
+    public String getProductPage(@PathVariable("product-id") UUID id, Model model) {
         Product product = productsService.getProduct(id);
         model.addAttribute("product", product);
 
@@ -56,14 +57,14 @@ public class ProductsController {
     }
 
     @PostMapping("/products/{product-id}/delete")
-    public String deleteProduct(@PathVariable("product-id") Integer id) {
+    public String deleteProduct(@PathVariable("product-id") UUID id) {
         productsService.deleteProduct(id);
 
         return "redirect:/products";
     }
 
     @PostMapping("/products/{product-id}/update")
-    public String updateProduct(ProductsForm productsForm, @PathVariable("product-id") Integer productId) {
+    public String updateProduct(ProductsForm productsForm, @PathVariable("product-id") UUID productId) {
         productsService.updateProduct(productsForm, productId);
 
         return "redirect:/products/{product-id}";

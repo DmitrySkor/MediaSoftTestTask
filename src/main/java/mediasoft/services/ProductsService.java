@@ -4,6 +4,7 @@ import mediasoft.forms.ProductsForm;
 import mediasoft.models.Product;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface ProductsService {
 
@@ -11,9 +12,9 @@ public interface ProductsService {
 
     void addProduct(Product product);
 
-    void deleteProduct(Integer id);
+    void deleteProduct(UUID id);
 
-    Product getProduct(Integer id);
+    Product getProduct(UUID id);
 
-    void updateProduct(ProductsForm productsForm, Integer productId);
+    void updateProduct(ProductsForm productsForm, UUID productId);
 }
