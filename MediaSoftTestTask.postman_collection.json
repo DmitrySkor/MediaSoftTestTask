@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "bd25cef5-d9fa-4904-93a9-fd9ecebae99e",
+		"name": "MediaSoftTestTask",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33997710"
+	},
+	"item": [
+		{
+			"name": "Create product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "category",
+							"value": " Амортизаторы",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": " АСТПП ВАЗ 2110 Стандарт",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": " Амортизаторные стойки передней подвески для а/м ВАЗ 2110 модификации \"Стандарт\"",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": " 250",
+							"type": "text"
+						},
+						{
+							"key": "quantity",
+							"value": " 10",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "category",
+							"value": " Пружины",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": " Пружины ПП ВАЗ 2110 Стандарт",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": " Пружины передней подвески для а/м ВАЗ 2110 8 кл.",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": " 350",
+							"type": "text"
+						},
+						{
+							"key": "quantity",
+							"value": " 10",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/products/:id/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"products",
+						":id",
+						"update"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				},
+				"description": "Взять уникальный id (тип: uuid) из ответа на предыдущий запрос (POST Create product)"
+			},
+			"response": []
+		},
+		{
+			"name": "Get products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/products/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"products",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "",
+							"description": "Взять уникальный id (тип: uuid) из ответа на запрос (POST Create product)"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get delete product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/products/:id/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"products",
+						":id",
+						"delete"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "",
+							"description": "Взять уникальный id (тип: uuid) из ответа на запрос (POST Create product)"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
